@@ -1,0 +1,31 @@
+<idea-plugin>
+    <id>com.github.baileyseye.branchcommitmessage</id>
+    <name>Branch Commit Message</name>
+    <version>1.0.0</version>
+    <vendor>baileyseye</vendor>
+
+    <description><![CDATA[
+        Prefills the commit message with the current Git branch name.
+        <br/>
+        The message is formatted as a Git subject followed by an empty line, and the caret
+        is placed on the line after that empty line, ready for the commit body.
+        <ul>
+            <li>Works in the Commit tool window and in the classic commit dialog.</li>
+            <li>Updates the message when the current Git branch changes, as long as the user
+                has not started editing the message.</li>
+            <li>Does nothing in detached HEAD state.</li>
+        </ul>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.vcs</depends>
+    <depends>Git4Idea</depends>
+
+    <idea-version since-build="262"/>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <vcs.commitMessageProvider
+                implementation="com.github.baileyseye.branchcommitmessage.BranchCommitMessageProvider"
+                order="first"/>
+    </extensions>
+</idea-plugin>
